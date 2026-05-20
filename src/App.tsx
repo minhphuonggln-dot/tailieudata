@@ -19,10 +19,109 @@ const TrashIcon = () => (
   </svg>
 );
 
+const dirtyData = [
+  { name: "Nguyễn Văn A", phone: "0901-234-567", date: "05/19/2026", revenue: "1500000", status: "Bẩn (Sai SĐT, Độc lập)" },
+  { name: "nguyen van a", phone: "0901234567", date: "19-05-2026", revenue: "NULL", status: "Bẩn (Trùng, Trống số liệu)" },
+  { name: "Chị Lan (Sales)", phone: "0987.654.321", date: "19/05/2026", revenue: "2,500,000", status: "Bẩn (Dính tên rác, sai định dạng)" }
+];
+
+const cleanData = [
+  { name: "Nguyễn Văn A", phone: "0901234567", date: "19/05/2026", revenue: "1,500,000 đ", status: "Sạch (Đã gộp & đồng bộ)" },
+  { name: "Nguyễn Thị Lan", phone: "0987654321", date: "19/05/2026", revenue: "2,500,000 đ", status: "Sạch (Đã chuẩn hóa thông tin)" }
+];
+
+const timelineData = [
+  {
+    time: "08:30 - 09:00",
+    title: "KIỂM TRA & PHÁT HIỆN SỰ CỐ",
+    desc: "Mở dashboard vận hành hàng ngày. Phát hiện tỷ lệ hủy đơn (Cancellation Rate) của nhóm khách hàng mới tăng vọt 15% vào tối hôm qua.",
+    accent: "border-l-4 border-[#e31f26] bg-[#e31f26]/5 text-[#e31f26]"
+  },
+  {
+    time: "09:00 - 10:30",
+    title: "TRUY VẤN DỮ LIỆU THÔ (DÙNG AI TRỢ GIÚP)",
+    desc: "Dùng ChatGPT/Claude để lên cấu trúc câu lệnh SQL nhanh, sau đó tự tinh chỉnh để kết nối (join) bảng Orders và Logs để tìm nguyên nhân gốc rễ.",
+    accent: "border-l-4 border-[#0000ff] bg-[#0000ff]/5 text-[#0000ff]"
+  },
+  {
+    time: "10:30 - 11:30",
+    title: "PHÁT HIỆN INSIGHT & PHỐI HỢP PHÒNG BAN",
+    desc: "Phát hiện cổng thanh toán Momo bị lỗi kết nối từ 20:00 - 22:00 khiến khách hàng không thanh toán được. DA báo ngay cho bộ phận Tech để kịp sửa chữa.",
+    accent: "border-l-4 border-amber-500 bg-amber-50 text-amber-700"
+  },
+  {
+    time: "11:30 - 12:00",
+    title: "BÁO CÁO NHANH CHO BAN GIÁM ĐỐC",
+    desc: "Gửi báo cáo ngắn cho Giám đốc vận hành kèm đề xuất kích hoạt lại giỏ hàng bị bỏ rơi của khách hàng bằng voucher đền bù.",
+    accent: "border-l-4 border-[#0000ff] bg-[#0000ff]/5 text-[#0000ff]"
+  },
+  {
+    time: "13:30 - 15:30",
+    title: "XỬ LÝ DỮ LIỆU BẨN (DATA CLEANING)",
+    desc: "Nhận file dữ liệu thô từ chiến dịch Marketing tuần trước gửi từ các KOLs. Loại bỏ dữ liệu trùng, xử lý các dòng trống (Null) trên Excel/Power BI.",
+    accent: "border-l-4 border-slate-400 bg-slate-100 text-slate-700"
+  },
+  {
+    time: "15:30 - 16:30",
+    title: "TRỰC QUAN HÓA (DASHBOARD)",
+    desc: "Xây dựng Dashboard báo cáo hiệu quả chiến dịch tiếp thị trên Power BI, so sánh chỉ số ROI thực tế với mục tiêu ban đầu.",
+    accent: "border-l-4 border-[#0000ff] bg-[#0000ff]/5 text-[#0000ff]"
+  },
+  {
+    time: "16:30 - 17:30",
+    title: "KỂ CHUYỆN DỮ LIỆU (STORYTELLING)",
+    desc: "Tóm tắt báo cáo thành 3 trang slide súc tích, giải thích số liệu bằng ngôn ngữ kinh doanh để ngày mai thuyết trình trước Sếp và team Marketing.",
+    accent: "border-l-4 border-[#e31f26] bg-[#e31f26]/5 text-[#e31f26]"
+  }
+];
+
+const domains = {
+  marketing: {
+    title: "E-commerce & Bán lẻ",
+    questions: [
+      "Sếp hỏi: Tại sao 40% khách hàng bỏ giỏ hàng ở bước thanh toán?",
+      "Sản phẩm áo thun thường được mua kèm với sản phẩm nào nhất để làm combo tăng doanh thu?"
+    ],
+    kpis: ["AOV (Giá trị đơn trung bình)", "Churn Rate (Tỷ lệ hủy)", "Retention Rate (Tỷ lệ giữ chân)"],
+    background: "Sales Admin, Quản lý cửa hàng, Chăm sóc khách hàng, Nhân viên kinh doanh cũ.",
+    weapon: "Nhạy cảm với hành vi mua sắm, thấu hiểu quy trình vận hành trực tiếp cửa hàng."
+  },
+  advertising: {
+    title: "Marketing & Quảng cáo",
+    questions: [
+      "Kênh quảng cáo TikTok hay Facebook mang lại khách hàng trung thành nhiều hơn?",
+      "Chi phí thực tế để sở hữu một khách hàng mới (CAC) trong tháng này tăng hay giảm?"
+    ],
+    kpis: ["ROI (Hiệu suất quảng cáo)", "CAC (Chi phí có khách hàng mới)", "CTR (Tỷ lệ nhấp chuột)"],
+    background: "Marketing Executive, Copywriter, Content Creator, Media Planner.",
+    weapon: "Am hiểu sâu sắc về phễu chuyển đổi khách hàng và tư duy tối ưu hóa ngân sách tiếp thị."
+  },
+  finance: {
+    title: "Kế toán & Tài chính",
+    questions: [
+      "Làm sao để tự động hóa việc đối chiếu 10,000 hóa đơn ngân hàng với sổ sách kế toán?",
+      "Doanh nghiệp có nguy cơ bị thâm hụt dòng tiền vào chu kỳ tháng tới hay không?"
+    ],
+    kpis: ["Cash Flow (Dòng tiền)", "NPV / IRR (Hiệu quả dự án)", "Error Rate (Tỷ lệ sai lệch số liệu)"],
+    background: "Kế toán viên, Kiểm toán viên, Giao dịch viên ngân hàng, Chuyên viên tín dụng.",
+    weapon: "Sự cẩn trọng tuyệt đối, độ chính xác đến từng con số và khả năng xử lý cấu trúc tài chính vững vàng."
+  },
+  logistics: {
+    title: "Vận tải & Logistics",
+    questions: [
+      "Tuyến đường giao hàng nào của shipper đang bị trễ hẹn và tốn nhiên liệu nhiều nhất?",
+      "Làm thế nào để giảm tối đa lượng hàng tồn kho của những nhóm sản phẩm bán chậm?"
+    ],
+    kpis: ["DOH (Ngày tồn kho trung bình)", "OTIF (Tỷ lệ giao đúng giờ)", "Shipping Cost per Unit"],
+    background: "Nhân viên kho vận, Điều phối viên giao hàng, Chuyên viên mua hàng (Procurement).",
+    weapon: "Tư duy tối ưu hóa quy trình phân phối vật lý, định vị địa lý và hạn chế lãng phí tài nguyên."
+  }
+};
+
 export default function App() {
   const [activeTab, setActiveTab] = useState('welcome');
   const [isDataCleaned, setIsDataCleaned] = useState(false);
-  const [selectedDomain, setSelectedDomain] = useState('marketing');
+  const [selectedDomain, setSelectedDomain] = useState<keyof typeof domains>('marketing');
   const [selectedTimelineSlot, setSelectedTimelineSlot] = useState(0);
   const [submittingStatus, setSubmittingStatus] = useState('idle'); // idle, loading, success, error
   const [quizScore, setQuizScore] = useState(0);
@@ -48,16 +147,22 @@ export default function App() {
     setQuizScore(trueCount);
   }, [quizSelections]);
 
-  const handleQuizToggle = (key) => {
-    setQuizSelections(prev => ({ ...prev, [key]: !prev[key] }));
+  const handleQuizToggle = (key: string) => {
+    setQuizSelections(prev => {
+      const k = key as keyof typeof prev;
+      return { ...prev, [k]: !prev[k] };
+    });
   };
 
-  const handleTaskToggle = (key) => {
-    setCompletedTasks(prev => ({ ...prev, [key]: !prev[key] }));
+  const handleTaskToggle = (key: string) => {
+    setCompletedTasks(prev => {
+      const k = key as keyof typeof prev;
+      return { ...prev, [k]: !prev[k] };
+    });
   };
 
   // Tích hợp API Đăng ký khách hàng với Exponential Backoff Retry (Tối đa 5 lần)
-  const handleRegSubmit = async (e) => {
+  const handleRegSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmittingStatus('loading');
 
@@ -117,105 +222,6 @@ export default function App() {
     backgroundImage: 'radial-gradient(#0000ff0d 1.5px, transparent 1.5px), radial-gradient(#e31f260a 1.5px, transparent 1.5px)',
     backgroundSize: '32px 32px',
     backgroundPosition: '0 0, 16px 16px'
-  };
-
-  const dirtyData = [
-    { name: "Nguyễn Văn A", phone: "0901-234-567", date: "05/19/2026", revenue: "1500000", status: "Bẩn (Sai SĐT, Độc lập)" },
-    { name: "nguyen van a", phone: "0901234567", date: "19-05-2026", revenue: "NULL", status: "Bẩn (Trùng, Trống số liệu)" },
-    { name: "Chị Lan (Sales)", phone: "0987.654.321", date: "19/05/2026", revenue: "2,500,000", status: "Bẩn (Dính tên rác, sai định dạng)" }
-  ];
-
-  const cleanData = [
-    { name: "Nguyễn Văn A", phone: "0901234567", date: "19/05/2026", revenue: "1,500,000 đ", status: "Sạch (Đã gộp & đồng bộ)" },
-    { name: "Nguyễn Thị Lan", phone: "0987654321", date: "19/05/2026", revenue: "2,500,000 đ", status: "Sạch (Đã chuẩn hóa thông tin)" }
-  ];
-
-  const timelineData = [
-    {
-      time: "08:30 - 09:00",
-      title: "KIỂM TRA & PHÁT HIỆN SỰ CỐ",
-      desc: "Mở dashboard vận hành hàng ngày. Phát hiện tỷ lệ hủy đơn (Cancellation Rate) của nhóm khách hàng mới tăng vọt 15% vào tối hôm qua.",
-      accent: "border-l-4 border-[#e31f26] bg-[#e31f26]/5 text-[#e31f26]"
-    },
-    {
-      time: "09:00 - 10:30",
-      title: "TRUY VẤN DỮ LIỆU THÔ (DÙNG AI TRỢ GIÚP)",
-      desc: "Dùng ChatGPT/Claude để lên cấu trúc câu lệnh SQL nhanh, sau đó tự tinh chỉnh để kết nối (join) bảng Orders và Logs để tìm nguyên nhân gốc rễ.",
-      accent: "border-l-4 border-[#0000ff] bg-[#0000ff]/5 text-[#0000ff]"
-    },
-    {
-      time: "10:30 - 11:30",
-      title: "PHÁT HIỆN INSIGHT & PHỐI HỢP PHÒNG BAN",
-      desc: "Phát hiện cổng thanh toán Momo bị lỗi kết nối từ 20:00 - 22:00 khiến khách hàng không thanh toán được. DA báo ngay cho bộ phận Tech để kịp sửa chữa.",
-      accent: "border-l-4 border-amber-500 bg-amber-50 text-amber-700"
-    },
-    {
-      time: "11:30 - 12:00",
-      title: "BÁO CÁO NHANH CHO BAN GIÁM ĐỐC",
-      desc: "Gửi báo cáo ngắn cho Giám đốc vận hành kèm đề xuất kích hoạt lại giỏ hàng bị bỏ rơi của khách hàng bằng voucher đền bù.",
-      accent: "border-l-4 border-[#0000ff] bg-[#0000ff]/5 text-[#0000ff]"
-    },
-    {
-      time: "13:30 - 15:30",
-      title: "XỬ LÝ DỮ LIỆU BẨN (DATA CLEANING)",
-      desc: "Nhận file dữ liệu thô từ chiến dịch Marketing tuần trước gửi từ các KOLs. Loại bỏ dữ liệu trùng, xử lý các dòng trống (Null) trên Excel/Power BI.",
-      accent: "border-l-4 border-slate-400 bg-slate-100 text-slate-700"
-    },
-    {
-      time: "15:30 - 16:30",
-      title: "TRỰC QUAN HÓA (DASHBOARD)",
-      desc: "Xây dựng Dashboard báo cáo hiệu quả chiến dịch tiếp thị trên Power BI, so sánh chỉ số ROI thực tế với mục tiêu ban đầu.",
-      accent: "border-l-4 border-[#0000ff] bg-[#0000ff]/5 text-[#0000ff]"
-    },
-    {
-      time: "16:30 - 17:30",
-      title: "KỂ CHUYỆN DỮ LIỆU (STORYTELLING)",
-      desc: "Tóm tắt báo cáo thành 3 trang slide súc tích, giải thích số liệu bằng ngôn ngữ kinh doanh để ngày mai thuyết trình trước Sếp và team Marketing.",
-      accent: "border-l-4 border-[#e31f26] bg-[#e31f26]/5 text-[#e31f26]"
-    }
-  ];
-
-  const domains = {
-    marketing: {
-      title: "E-commerce & Bán lẻ",
-      questions: [
-        "Sếp hỏi: Tại sao 40% khách hàng bỏ giỏ hàng ở bước thanh toán?",
-        "Sản phẩm áo thun thường được mua kèm với sản phẩm nào nhất để làm combo tăng doanh thu?"
-      ],
-      kpis: ["AOV (Giá trị đơn trung bình)", "Churn Rate (Tỷ lệ hủy)", "Retention Rate (Tỷ lệ giữ chân)"],
-      background: "Sales Admin, Quản lý cửa hàng, Chăm sóc khách hàng, Nhân viên kinh doanh cũ.",
-      weapon: "Nhạy cảm với hành vi mua sắm, thấu hiểu quy trình vận hành trực tiếp cửa hàng."
-    },
-    advertising: {
-      title: "Marketing & Quảng cáo",
-      questions: [
-        "Kênh quảng cáo TikTok hay Facebook mang lại khách hàng trung thành nhiều hơn?",
-        "Chi phí thực tế để sở hữu một khách hàng mới (CAC) trong tháng này tăng hay giảm?"
-      ],
-      kpis: ["ROI (Hiệu suất quảng cáo)", "CAC (Chi phí có khách hàng mới)", "CTR (Tỷ lệ nhấp chuột)"],
-      background: "Marketing Executive, Copywriter, Content Creator, Media Planner.",
-      weapon: "Am hiểu sâu sắc về phễu chuyển đổi khách hàng và tư duy tối ưu hóa ngân sách tiếp thị."
-    },
-    finance: {
-      title: "Kế toán & Tài chính",
-      questions: [
-        "Làm sao để tự động hóa việc đối chiếu 10,000 hóa đơn ngân hàng với sổ sách kế toán?",
-        "Doanh nghiệp có nguy cơ bị thâm hụt dòng tiền vào chu kỳ tháng tới hay không?"
-      ],
-      kpis: ["Cash Flow (Dòng tiền)", "NPV / IRR (Hiệu quả dự án)", "Error Rate (Tỷ lệ sai lệch số liệu)"],
-      background: "Kế toán viên, Kiểm toán viên, Giao dịch viên ngân hàng, Chuyên viên tín dụng.",
-      weapon: "Sự cẩn trọng tuyệt đối, độ chính xác đến từng con số và khả năng xử lý cấu trúc tài chính vững vàng."
-    },
-    logistics: {
-      title: "Vận tải & Logistics",
-      questions: [
-        "Tuyến đường giao hàng nào của shipper đang bị trễ hẹn và tốn nhiên liệu nhiều nhất?",
-        "Làm thế nào để giảm tối đa lượng hàng tồn kho của những nhóm sản phẩm bán chậm?"
-      ],
-      kpis: ["DOH (Ngày tồn kho trung bình)", "OTIF (Tỷ lệ giao đúng giờ)", "Shipping Cost per Unit"],
-      background: "Nhân viên kho vận, Điều phối viên giao hàng, Chuyên viên mua hàng (Procurement).",
-      weapon: "Tư duy tối ưu hóa quy trình phân phối vật lý, định vị địa lý và hạn chế lãng phí tài nguyên."
-    }
   };
 
   return (
@@ -1319,7 +1325,7 @@ export default function App() {
                 <div>
                   <label className="text-[10px] text-slate-500 uppercase tracking-widest font-black block mb-1.5">CÂU HỎI EM MUỐN ĐẶT CHO CHUYÊN GIA (NẾU CÓ)</label>
                   <textarea
-                    rows="3"
+                    rows={3}
                     value={regForm.message}
                     onChange={(e) => setRegForm(prev => ({ ...prev, message: e.target.value }))}
                     placeholder="Ví dụ: Em muốn tận dụng 3 năm kinh nghiệm làm Logistics để tối ưu mảng Supply Chain DA..."
