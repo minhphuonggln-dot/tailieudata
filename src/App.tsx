@@ -161,51 +161,33 @@ export default function App() {
     });
   };
 
-  // Tích hợp API Đăng ký khách hàng với Exponential Backoff Retry (Tối đa 5 lần)
+  // Gửi dữ liệu đăng ký khách hàng lên Google Sheets qua Google Apps Script
+  const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxX-PIjX0HrE7aYHKxPuBOWXb-h-kD7J8E7MvDBkPL3QnI2M2Vq8i3uKAxZR5UiGQC_/exec';
+
   const handleRegSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmittingStatus('loading');
 
-    const payload = {
-      fullName: regForm.fullName,
-      email: regForm.email,
-      phone: regForm.phone,
-      experience: regForm.experience,
-      message: regForm.message,
-      submittedAt: new Date().toISOString(),
-      source: "mindx_da_career_guide_interactive_2026"
-    };
-
-    const sendLeadWithRetry = async (retries = 5, delay = 1000) => {
-      try {
-        const response = await fetch('https://api.mindx.edu.vn/customer-registration/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(payload)
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP Error Status: ${response.status}`);
-        }
-
-        return await response.json();
-      } catch (err) {
-        if (retries > 0) {
-          // Thử lại theo lũy thừa thời gian (delay nhân đôi)
-          await new Promise(resolve => setTimeout(resolve, delay));
-          return sendLeadWithRetry(retries - 1, delay * 2);
-        } else {
-          throw err;
-        }
-      }
-    };
+    const formData = new FormData();
+    formData.append('fullName', regForm.fullName);
+    formData.append('email', regForm.email);
+    formData.append('phone', regForm.phone);
+    formData.append('experience', regForm.experience);
+    formData.append('message', regForm.message);
+    formData.append('submittedAt', new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' }));
+    formData.append('source', 'mindx_da_career_guide_interactive_2026');
 
     try {
-      await sendLeadWithRetry();
+      // Dùng no-cors vì Google Apps Script không trả về CORS header
+      // Dữ liệu vẫn được ghi vào Sheet thành công dù response bị opaque
+      await fetch(GOOGLE_APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData,
+      });
+
+      // Vì no-cors không trả về status, ta luôn coi là thành công sau khi fetch hoàn tất
       setSubmittingStatus('success');
-      // Reset form sau khi gửi thành công
       setRegForm({
         fullName: '', email: '', phone: '', experience: 'non-it-worker', message: ''
       });
