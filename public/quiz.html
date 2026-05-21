@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tôi Có Hợp Với Ngành Data Analyst Không?</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Custom radio button hidden style */
+        .quiz-radio { display: none; }
+    </style>
+</head>
+<body class="text-slate-800 bg-[#FAFAFA] min-h-screen selection:bg-red-100 selection:text-red-900 pb-10">
+
+    <!-- HEADER NAV -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-slate-200 z-50">
+        <div class="max-w-4xl mx-auto px-6 h-16 flex justify-between items-center">
+            <div class="font-black text-xl tracking-tight text-slate-900">
+                MIND<span class="text-red-600">X</span>
+            </div>
+            <a href="#quiz-section" class="text-sm font-semibold text-slate-600 hover:text-slate-900 flex items-center gap-1 transition-colors">
+                Làm bài Test <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="pt-32 pb-16 px-6 relative overflow-hidden">
+        <div class="max-w-3xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 text-red-700 font-semibold text-xs uppercase tracking-widest mb-8 border border-red-100 shadow-sm">
+                <i data-lucide="book-open" class="w-4 h-4"></i> Data Analyst Lead Magnet v3
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-[1.15] tracking-tight mb-6">
+                Tôi Có Hợp Với Ngành <br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-500">
+                    Data Analyst
+                </span> Không?
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-slate-600 font-medium leading-snug mb-10 max-w-2xl mx-auto">
+                Trải nghiệm một ngày làm việc thực tế & Bảng tự đánh giá 20 tố chất Data Analyst ứng dụng AI.
+            </p>
+
+            <a href="#quiz-section" class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/40 hover:-translate-y-0.5">
+                Bắt Đầu Đánh Giá <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-6 space-y-20">
+
+        <!-- DISCLAIMER / ALERT BOX -->
+        <section>
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 md:p-8 relative overflow-hidden">
+                <i data-lucide="alert-circle" class="absolute -top-4 -right-4 text-amber-300 w-32 h-32 opacity-20"></i>
+                <h3 class="text-lg font-bold text-amber-900 mb-3 flex items-center gap-2 relative z-10">
+                    <i data-lucide="alert-circle" class="w-5 h-5"></i> Lưu ý quan trọng
+                </h3>
+                <p class="text-amber-800 leading-relaxed text-base md:text-lg font-medium relative z-10">
+                    Tài liệu này KHÔNG phải brochure khóa học. Đây là bản mô tả chân thực nhất về nghề Data Analyst (DA) trong kỷ nguyên AI — bao gồm những phần việc thực tế không ai muốn nói trên quảng cáo, đi kèm bảng <strong>20 câu hỏi trắc nghiệm tự đánh giá tố chất</strong> giúp bạn biết mình có thực sự phù hợp với nghề này không trước khi đầu tư thời gian và tiền bạc.
+                </p>
+            </div>
+        </section>
+
+        <!-- WHO IS THIS FOR (PROS/CONS GRID) -->
+        <section class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Dành cho ai -->
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i data-lucide="check-circle-2" class="text-emerald-500 w-6 h-6"></i>
+                        <h3 class="font-bold text-lg text-slate-900">Dành cho ai?</h3>
+                    </div>
+                    <ul class="space-y-4 text-slate-600 text-sm md:text-base">
+                        <li class="flex items-start gap-3">
+                            <span class="mt-0.5 text-emerald-500 flex-shrink-0">•</span>
+                            <span><strong>Người đi làm trái ngành (25-35 tuổi):</strong> Marketing, Kế toán, Sales, Nhân sự... muốn chuyển hướng sang dữ liệu để bứt phá thu nhập nhưng lo lắng không biết code.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="mt-0.5 text-emerald-500 flex-shrink-0">•</span>
+                            <span><strong>Sinh viên Kinh tế/Quản trị (20-24 tuổi):</strong> Chuẩn bị ra trường muốn trang bị kỹ năng phân tích để làm đẹp CV và có lợi thế cạnh tranh.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Không dành cho -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-sm">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i data-lucide="x-circle" class="text-red-500 w-6 h-6"></i>
+                        <h3 class="font-bold text-lg text-slate-900">Không dành cho:</h3>
+                    </div>
+                    <ul class="space-y-4 text-slate-600 text-sm md:text-base">
+                        <li class="flex items-start gap-3">
+                            <span class="mt-0.5 text-red-500 flex-shrink-0">•</span>
+                            <span>Senior DA lâu năm tìm kiếm hướng dẫn lập trình chuyên sâu, Deep Learning hay kiến trúc Cloud dữ liệu phức tạp.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="mt-0.5 text-red-500 flex-shrink-0">•</span>
+                            <span>Những người chỉ muốn học viết code thuần túy mà không quan tâm đến tư duy giải quyết vấn đề kinh doanh.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="h-px bg-slate-200 w-full"></div>
+
+        <!-- PERSONA SECTION -->
+        <section>
+            <div class="mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3 tracking-tight">
+                    Bản đồ Persona — "Bạn đang ở đâu?"
+                </h2>
+                <p class="text-slate-600 text-lg leading-relaxed">
+                    Dành 30 giây để tự xác định vị trí của bản thân. Việc nhận diện đúng nhóm sẽ giúp bạn đọc và áp dụng tài liệu một cách hiệu quả nhất.
+                </p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Nhóm A -->
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:border-slate-300 transition-colors">
+                    <div class="p-6 border-b border-slate-100 flex items-center gap-4 bg-red-50/50">
+                        <i data-lucide="target" class="w-6 h-6 text-red-600"></i>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Nhóm A — Người đi làm chuyển ngành (Reskiller)</h3>
+                            <p class="text-sm font-medium text-slate-500">25 – 35 tuổi</p>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8 space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Nền tảng hiện tại</h4>
+                                <p class="text-slate-700">Đang làm Marketing, Kế toán, Tài chính, Sales, Nhân sự...</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Lợi thế cạnh tranh</h4>
+                                <p class="text-emerald-700 font-medium bg-emerald-50 px-3 py-2 rounded-lg text-sm">Domain Knowledge (Kiến thức nghiệp vụ): Hiểu rõ cách một phòng ban vận hành, hiểu ngôn ngữ kinh doanh và nỗi đau của doanh nghiệp.</p>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Trăn trở lớn nhất</h4>
+                            <p class="text-slate-700 italic">"Trái ngành, lớn tuổi, không có nền tảng CNTT/IT thì có chuyển sang làm DA kịp không? Liệu doanh nghiệp có tuyển không?"</p>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6 pt-2 text-sm text-slate-600">
+                            <div><strong class="text-slate-800">Nỗi lo sợ:</strong> Mất thời gian, đầu tư sai hướng, không theo kịp kỹ thuật lập trình.</div>
+                            <div><strong class="text-slate-800">Kỳ vọng:</strong> Tìm kiếm một lộ trình chuyển ngành thực chiến, an toàn và tối ưu thời gian.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nhóm B -->
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:border-slate-300 transition-colors">
+                    <div class="p-6 border-b border-slate-100 flex items-center gap-4 bg-blue-50/50">
+                        <i data-lucide="zap" class="w-6 h-6 text-blue-600"></i>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Nhóm B — Sinh viên / Mới ra trường (Career Starter)</h3>
+                            <p class="text-sm font-medium text-slate-500">20 – 24 tuổi</p>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8 space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Nền tảng hiện tại</h4>
+                                <p class="text-slate-700">Đang học hoặc mới tốt nghiệp khối ngành Kinh tế, Quản trị, Ngoại thương...</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Lợi thế cạnh tranh</h4>
+                                <p class="text-emerald-700 font-medium bg-emerald-50 px-3 py-2 rounded-lg text-sm">Khả năng học hỏi nhanh: Dễ dàng tiếp thu công cụ mới, có tư duy lý thuyết kinh tế hiện đại và nhiều thời gian tự học.</p>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Trăn trở lớn nhất</h4>
+                            <p class="text-slate-700 italic">"Mình có tư duy kinh tế nhưng chưa có kinh nghiệm thực tế. Portfolio trống trơn thì làm sao xin được việc thực tập/fresher?"</p>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6 pt-2 text-sm text-slate-600">
+                            <div><strong class="text-slate-800">Nỗi lo sợ:</strong> Không cạnh tranh nổi với cử nhân ngành Công nghệ thông tin hoặc Toán tin.</div>
+                            <div><strong class="text-slate-800">Kỳ vọng:</strong> Tìm kiếm phương pháp xây dựng Portfolio thực tế để thuyết phục nhà tuyển dụng.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DAILY ROUTINE TIMELINE -->
+        <section>
+            <div class="mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4 tracking-tight">
+                    Sự thật về một ngày làm Data Analyst
+                </h2>
+                <p class="text-slate-600 text-lg leading-relaxed mb-4">
+                    DA thực sự là ai? Có tới 70% công việc hàng ngày của DA là nghiên cứu & phát triển sản phẩm dữ liệu mới. Nhiệm vụ cốt lõi là <strong>cầu nối giữa Dữ liệu và Kinh doanh</strong>.
+                </p>
+                <div class="bg-slate-900 text-white p-5 rounded-xl text-sm leading-relaxed font-medium">
+                    "Trong kỷ nguyên hiện nay, các công cụ GenAI (ChatGPT, Claude) đã có thể tự động viết code SQL hay Python. Điều này giúp định hình lại chân dung của một <strong>AI-Augmented Analyst</strong> — người dùng AI để giải phóng việc gõ code cơ học, tập trung vào tư duy nghiệp vụ."
+                </div>
+            </div>
+
+            <!-- Timeline Items -->
+            <div class="relative pl-6 md:pl-8 border-l border-slate-200 space-y-12 py-4">
+                
+                <!-- 08:00 -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] md:-left-[39px] top-1 bg-[#FAFAFA] p-1">
+                        <div class="w-3 h-3 bg-red-500 rounded-full ring-4 ring-red-50"></div>
+                    </div>
+                    <div class="text-sm font-bold text-red-600 mb-1 flex items-center gap-2">
+                        <i data-lucide="clock" class="w-4 h-4"></i> 08:00 – 09:00
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Triage & Orientation (Định hướng & Phân loại)</h3>
+                    <ul class="space-y-2 mb-4 text-slate-600 leading-relaxed text-base">
+                        <li class="flex items-start gap-2"><span class="text-slate-300 mt-1 flex-shrink-0">—</span>Kiểm tra Slack/Teams xem có alert bất thường từ hệ thống dữ liệu đêm qua không.</li>
+                        <li class="flex items-start gap-2"><span class="text-slate-300 mt-1 flex-shrink-0">—</span>Lướt email: phản hồi stakeholder, tiếp nhận ticket mới.</li>
+                        <li class="flex items-start gap-2"><span class="text-slate-300 mt-1 flex-shrink-0">—</span>Mở dashboard monitoring chẩn đoán 'sức khỏe' dữ liệu ngày hôm nay.</li>
+                    </ul>
+                    <div class="mt-4 bg-slate-50 border border-slate-100 p-4 rounded-xl flex gap-3 text-slate-700 italic text-sm md:text-base">
+                        <i data-lucide="message-square" class="w-5 h-5 text-slate-400 flex-shrink-0 mt-0.5"></i>
+                        <p>"Nhiều hôm vừa mở máy đã thấy tin nhắn réo: 'Em ơi sao doanh thu hôm qua thấp vậy?' — và cả buổi sáng lập tức biến thành cuộc điều tra sự cố."</p>
+                    </div>
+                </div>
+
+                <!-- 09:00 -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] md:-left-[39px] top-1 bg-[#FAFAFA] p-1">
+                        <div class="w-3 h-3 bg-red-500 rounded-full ring-4 ring-red-50"></div>
+                    </div>
+                    <div class="text-sm font-bold text-red-600 mb-1 flex items-center gap-2">
+                        <i data-lucide="clock" class="w-4 h-4"></i> 09:00 – 11:30
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Core Work: Analysis & Query (Phân tích & Truy vấn)</h3>
+                    <ul class="space-y-2 mb-4 text-slate-600 leading-relaxed text-base">
+                        <li class="flex items-start gap-2"><span class="text-slate-300 mt-1 flex-shrink-0">—</span>Viết SQL lấy dữ liệu thô, liên kết bảng, tính toán metrics.</li>
+                        <li class="flex items-start gap-2"><span class="text-slate-300 mt-1 flex-shrink-0">—</span>Xử lý ad-hoc request từ Product/Marketing/Business.</li>
+                        <li class="flex items-start gap-2"><span class="text-slate-300 mt-1 flex-shrink-0">—</span>Thực hiện phân tích chuyên sâu: cohort, funnel, A/B test.</li>
+                        <li class="flex items-start gap-2"><span class="text-slate-300 mt-1 flex-shrink-0">—</span>Sử dụng đòn bẩy AI (ChatGPT/Claude) hỗ trợ viết code nhanh.</li>
+                    </ul>
+                    <div class="mt-4 bg-slate-50 border border-slate-100 p-4 rounded-xl flex gap-3 text-slate-700 italic text-sm md:text-base">
+                        <i data-lucide="message-square" class="w-5 h-5 text-slate-400 flex-shrink-0 mt-0.5"></i>
+                        <p>"Thực tế 80% thời gian là dọn dẹp dữ liệu bẩn. Câu query tưởng viết 15 phút, phát hiện lỗi phải xử lý mất cả buổi sáng."</p>
+                    </div>
+                </div>
+
+                <!-- 11:30 -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] md:-left-[39px] top-1 bg-[#FAFAFA] p-1">
+                        <div class="w-3 h-3 bg-red-500 rounded-full ring-4 ring-red-50"></div>
+                    </div>
+                    <div class="text-sm font-bold text-red-600 mb-1 flex items-center gap-2">
+                        <i data-lucide="clock" class="w-4 h-4"></i> 11:30 – 12:00
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Sync với Team</h3>
+                    <ul class="space-y-2 mb-4 text-slate-600 leading-relaxed text-base">
+                        <li class="flex items-start gap-2"><span class="text-slate-300 mt-1 flex-shrink-0">—</span>Họp standup ngắn với data/product team cập nhật tiến độ.</li>
+                        <li class="flex items-start gap-2"><span class="text-slate-300 mt-1 flex-shrink-0">—</span>Trao đổi với stakeholder làm rõ yêu cầu phân tích tránh làm sai ý.</li>
+                    </ul>
+                </div>
+
+                <!-- 13:00 -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] md:-left-[39px] top-1 bg-[#FAFAFA] p-1">
+                        <div class="w-3 h-3 bg-red-500 rounded-full ring-4 ring-red-50"></div>
+                    </div>
+                    <div class="text-sm font-bold text-red-600 mb-1 flex items-center gap-2">
+                        <i data-lucide="clock" class="w-4 h-4"></i> 13:00 – 15:30
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Visualization & Storytelling (Trực quan hóa)</h3>
+                    <ul class="space-y-2 mb-4 text-slate-600 leading-relaxed text-base">
+                        <li class="flex items-start gap-2"><span class="text-slate-300 mt-1 flex-shrink-0">—</span>Thiết kế/cập nhật dashboard trên Power BI / Tableau.</li>
+                        <li class="flex items-start gap-2"><span class="text-slate-300 mt-1 flex-shrink-0">—</span>Viết commentary giải thích nguyên nhân chỉ số tăng/giảm.</li>
+                        <li class="flex items-start gap-2"><span class="text-slate-300 mt-1 flex-shrink-0">—</span>Chuẩn bị slide, làm report súc tích cho buổi họp review.</li>
+                    </ul>
+                    <div class="mt-4 bg-slate-50 border border-slate-100 p-4 rounded-xl flex gap-3 text-slate-700 italic text-sm md:text-base">
+                        <i data-lucide="message-square" class="w-5 h-5 text-slate-400 flex-shrink-0 mt-0.5"></i>
+                        <p>"Phần này nhiều người mới hay bỏ qua vì thích viết code hơn, nhưng đây mới là lúc tạo ra giá trị thực sự cho doanh nghiệp."</p>
+                    </div>
+                </div>
+                
+                <!-- 15:30 -->
+                 <div class="relative">
+                    <div class="absolute -left-[31px] md:-left-[39px] top-1 bg-[#FAFAFA] p-1">
+                        <div class="w-3 h-3 bg-red-500 rounded-full ring-4 ring-red-50"></div>
+                    </div>
+                    <div class="text-sm font-bold text-red-600 mb-1 flex items-center gap-2">
+                        <i data-lucide="clock" class="w-4 h-4"></i> 15:30 – 18:00
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Respond, Document & Wrap-up</h3>
+                    <ul class="space-y-2 mb-4 text-slate-600 leading-relaxed text-base">
+                        <li class="flex items-start gap-2"><span class="text-slate-300 mt-1 flex-shrink-0">—</span>Xử lý nốt các yêu cầu báo cáo nhỏ. Viết tài liệu logic nghiệp vụ.</li>
+                        <li class="flex items-start gap-2"><span class="text-slate-300 mt-1 flex-shrink-0">—</span>Review code cho team thành viên khác.</li>
+                        <li class="flex items-start gap-2"><span class="text-slate-300 mt-1 flex-shrink-0">—</span>Tổng kết việc đã làm, thiết lập priority cho ngày hôm sau.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- HYPE VS REALITY -->
+        <section>
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-slate-900 mb-2">Lời đồn vs. Sự thật</h2>
+                <p class="text-slate-600">Đập tan các misconception phổ biến về nghề DA.</p>
+            </div>
+            
+            <div class="grid gap-4">
+                <!-- Item 1 -->
+                <div class="bg-white border border-slate-200 p-5 rounded-2xl flex flex-col md:flex-row gap-4 hover:border-slate-300 transition-colors">
+                    <div class="md:w-5/12">
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Lời đồn trên mạng</div>
+                        <p class="text-slate-900 font-medium line-through decoration-red-300 decoration-2">"Học DA 3 tháng là cam kết việc làm lương nghìn đô"</p>
+                    </div>
+                    <div class="hidden md:block w-px bg-slate-100"></div>
+                    <div class="md:w-7/12">
+                        <div class="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-1">Sự thật thực tế</div>
+                        <p class="text-slate-600 text-sm leading-relaxed">Thu nhập nghìn đô chỉ dành cho DA có kinh nghiệm và am hiểu nghiệp vụ sâu sắc. Fresher thường bắt đầu từ 12-15 triệu VND/tháng.</p>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="bg-white border border-slate-200 p-5 rounded-2xl flex flex-col md:flex-row gap-4 hover:border-slate-300 transition-colors">
+                    <div class="md:w-5/12">
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Lời đồn trên mạng</div>
+                        <p class="text-slate-900 font-medium line-through decoration-red-300 decoration-2">"Phải giỏi toán cao cấp và lập trình siêu đẳng mới học được"</p>
+                    </div>
+                    <div class="hidden md:block w-px bg-slate-100"></div>
+                    <div class="md:w-7/12">
+                        <div class="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-1">Sự thật thực tế</div>
+                        <p class="text-slate-600 text-sm leading-relaxed">DA chủ yếu dùng toán thống kê mô tả cơ bản và tư duy logic. Lập trình SQL/Python giờ đã được AI hỗ trợ rất nhiều.</p>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="bg-white border border-slate-200 p-5 rounded-2xl flex flex-col md:flex-row gap-4 hover:border-slate-300 transition-colors">
+                    <div class="md:w-5/12">
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Lời đồn trên mạng</div>
+                        <p class="text-slate-900 font-medium line-through decoration-red-300 decoration-2">"AI sẽ sớm thay thế hoàn toàn Data Analyst"</p>
+                    </div>
+                    <div class="hidden md:block w-px bg-slate-100"></div>
+                    <div class="md:w-7/12">
+                        <div class="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-1">Sự thật thực tế</div>
+                        <p class="text-slate-600 text-sm leading-relaxed">AI chỉ thay thế người làm báo cáo thủ công. DA có tư duy nghiệp vụ sẽ dùng AI làm đòn bẩy để hiệu quả gấp 3 lần.</p>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="bg-white border border-slate-200 p-5 rounded-2xl flex flex-col md:flex-row gap-4 hover:border-slate-300 transition-colors">
+                    <div class="md:w-5/12">
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Lời đồn trên mạng</div>
+                        <p class="text-slate-900 font-medium line-through decoration-red-300 decoration-2">"Học trái ngành thì không thể cạnh tranh lại dân CNTT"</p>
+                    </div>
+                    <div class="hidden md:block w-px bg-slate-100"></div>
+                    <div class="md:w-7/12">
+                        <div class="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-1">Sự thật thực tế</div>
+                        <p class="text-slate-600 text-sm leading-relaxed">Trái ngành là LỢI THẾ! Doanh nghiệp cực kỳ thích DA có Domain Knowledge (Kế toán, Marketing, Sales) vì họ hiểu dữ liệu nhanh hơn.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="h-px bg-slate-200 w-full"></div>
+
+        <!-- QUIZ SECTION (Dynamic generated by JS) -->
+        <section id="quiz-section">
+            <div class="mb-10 text-center">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">
+                    Bảng Tự Đánh Giá Tố Chất
+                </h2>
+                <p class="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">
+                    Để biết mức độ tương thích của bản thân, hãy làm bài trắc nghiệm 20 câu. <br/>
+                    <em>Hãy chấm điểm dựa trên phản xạ tự nhiên thực tế của bạn.</em>
+                </p>
+                
+                <div class="mt-8 inline-flex flex-wrap justify-center bg-white border border-slate-200 rounded-xl p-2 shadow-sm text-sm font-medium text-slate-600 gap-2">
+                    <span class="px-3 py-1.5 rounded-lg">1 = Hoàn toàn không</span>
+                    <span class="px-3 py-1.5 rounded-lg">2 = Ít khi</span>
+                    <span class="px-3 py-1.5 rounded-lg">3 = Đôi khi</span>
+                    <span class="px-3 py-1.5 rounded-lg">4 = Thường xuyên</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-900 font-bold">5 = Hoàn toàn đúng</span>
+                </div>
+            </div>
+
+            <!-- Quiz Container -->
+            <div id="quiz-container" class="space-y-16">
+                <!-- Javascript will render questions here -->
+            </div>
+
+            <!-- Validation Error -->
+            <div id="validation-error" class="hidden mt-8 bg-rose-50 text-rose-600 p-4 rounded-xl border border-rose-100 flex items-center gap-3 font-medium justify-center text-center">
+                <i data-lucide="alert-circle" class="w-5 h-5"></i>
+                <span id="error-message"></span>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="mt-12 text-center">
+                <button id="submit-quiz-btn" class="bg-slate-900 text-white px-12 py-5 rounded-xl font-bold text-lg hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 w-full md:w-auto">
+                    Chấm Điểm & Phân Tích Kết Quả
+                </button>
+            </div>
+        </section>
+
+        <!-- RESULTS SECTION -->
+        <section id="result-section" class="hidden bg-white border-2 border-slate-900 p-8 md:p-12 rounded-3xl shadow-xl mt-12 scroll-mt-24">
+            <div class="text-center mb-10 border-b border-slate-100 pb-10">
+                <h2 class="text-2xl font-bold text-slate-500 uppercase tracking-widest mb-4">Tổng điểm của bạn</h2>
+                <div class="text-8xl font-black text-slate-900 tracking-tighter mb-6">
+                    <span id="score-display">0</span><span class="text-4xl text-slate-300 font-bold">/100</span>
+                </div>
+                
+                <div id="feedback-box" class="p-6 rounded-2xl border text-left">
+                    <h3 id="feedback-title" class="text-xl md:text-2xl font-bold mb-3"></h3>
+                    <p id="feedback-desc" class="text-slate-700 text-lg leading-relaxed mb-4"></p>
+                    <div id="feedback-action" class="bg-white/60 p-4 rounded-xl text-slate-800 font-medium text-sm md:text-base border border-white"></div>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-slate-900 mb-6 text-center">Phân tích chi tiết 4 nhóm tố chất</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Group Scores -->
+                <div class="bg-slate-50 border border-slate-100 p-5 rounded-2xl text-center">
+                    <div class="text-3xl font-bold text-slate-900 mb-1"><span id="score-A">0</span><span class="text-lg text-slate-400">/25</span></div>
+                    <div class="text-sm font-bold text-slate-700">Logic (Nhóm A)</div>
+                    <div class="text-xs text-slate-500 mt-1 hidden md:block">Tư duy phân tích</div>
+                </div>
+                <div class="bg-slate-50 border border-slate-100 p-5 rounded-2xl text-center">
+                    <div class="text-3xl font-bold text-slate-900 mb-1"><span id="score-B">0</span><span class="text-lg text-slate-400">/25</span></div>
+                    <div class="text-sm font-bold text-slate-700">Kinh doanh (Nhóm B)</div>
+                    <div class="text-xs text-slate-500 mt-1 hidden md:block">Sự tò mò dữ liệu</div>
+                </div>
+                <div class="bg-slate-50 border border-slate-100 p-5 rounded-2xl text-center">
+                    <div class="text-3xl font-bold text-slate-900 mb-1"><span id="score-C">0</span><span class="text-lg text-slate-400">/25</span></div>
+                    <div class="text-sm font-bold text-slate-700">Tỉ mỉ (Nhóm C)</div>
+                    <div class="text-xs text-slate-500 mt-1 hidden md:block">Sự kiên nhẫn</div>
+                </div>
+                <div class="bg-slate-50 border border-slate-100 p-5 rounded-2xl text-center">
+                    <div class="text-3xl font-bold text-slate-900 mb-1"><span id="score-D">0</span><span class="text-lg text-slate-400">/25</span></div>
+                    <div class="text-sm font-bold text-slate-700">Giao tiếp (Nhóm D)</div>
+                    <div class="text-xs text-slate-500 mt-1 hidden md:block">Kể chuyện số liệu</div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-sm text-slate-500 leading-relaxed italic bg-slate-50 p-5 rounded-xl border border-slate-100">
+                <strong>💡 Tại sao các nhóm này quan trọng?</strong> AI có thể viết SQL thay bạn, nhưng AI không biết tại sao doanh thu giảm (Cần Logic). Nếu không hiểu vận hành, bạn chỉ làm báo cáo thủ công (Cần Kinh doanh). Dấu phẩy sai làm lệch hàng tỷ đồng (Cần Tỉ mỉ). Insight hay nhưng sếp không hiểu thì vô dụng (Cần Giao tiếp).
+            </div>
+        </section>
+
+        <!-- ROADMAP SECTION -->
+        <section>
+            <div class="mb-10 text-center">
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4 tracking-tight">
+                    Lộ trình 4 chặng tích lũy kỹ năng
+                </h2>
+                <p class="text-slate-600 text-lg">
+                    Đi từ con số 0 đến bộ Portfolio 3 dự án thực chiến sẵn sàng ứng tuyển thời đại AI.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Chặng 1 -->
+                <div class="bg-white border border-slate-200 p-6 rounded-2xl flex flex-col md:flex-row gap-6 items-start hover:border-red-200 transition-colors group">
+                    <div class="flex-shrink-0 w-12 h-12 bg-slate-900 group-hover:bg-red-600 text-white rounded-xl flex items-center justify-center font-black text-xl transition-colors">1</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">Nền Tảng Phân Tích & Trực Quan Hóa</h3>
+                        <div class="text-xs font-bold text-red-600 tracking-wider uppercase mb-3 bg-red-50 inline-block px-2 py-1 rounded">SQL + Power BI + AI</div>
+                        <p class="text-slate-600 leading-relaxed">Học truy vấn cơ bản, trực quan hóa và ứng dụng AI (ChatGPT) viết prompt hỗ trợ code. Xây dựng Dashboard bán hàng tương tác.</p>
+                    </div>
+                </div>
+                <!-- Chặng 2 -->
+                <div class="bg-white border border-slate-200 p-6 rounded-2xl flex flex-col md:flex-row gap-6 items-start hover:border-red-200 transition-colors group">
+                    <div class="flex-shrink-0 w-12 h-12 bg-slate-900 group-hover:bg-red-600 text-white rounded-xl flex items-center justify-center font-black text-xl transition-colors">2</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">Phân Tích Kinh Doanh Chuyên Sâu (BI)</h3>
+                        <div class="text-xs font-bold text-red-600 tracking-wider uppercase mb-3 bg-red-50 inline-block px-2 py-1 rounded">Python + Nghiệp vụ</div>
+                        <p class="text-slate-600 leading-relaxed">Lập trình phân tích với Pandas/NumPy. Áp dụng tư duy phân tích nghiệp vụ: RFM, Cohort, Churn Analysis.</p>
+                    </div>
+                </div>
+                <!-- Chặng 3 -->
+                <div class="bg-white border border-slate-200 p-6 rounded-2xl flex flex-col md:flex-row gap-6 items-start hover:border-red-200 transition-colors group">
+                    <div class="flex-shrink-0 w-12 h-12 bg-slate-900 group-hover:bg-red-600 text-white rounded-xl flex items-center justify-center font-black text-xl transition-colors">3</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">Phân Tích Dự Báo & Học Máy</h3>
+                        <div class="text-xs font-bold text-red-600 tracking-wider uppercase mb-3 bg-red-50 inline-block px-2 py-1 rounded">Machine Learning cơ bản</div>
+                        <p class="text-slate-600 leading-relaxed">Hiểu nguyên lý thuật toán hồi quy, phân loại. Đóng gói mô hình thành Web App cục bộ đơn giản dự báo số liệu.</p>
+                    </div>
+                </div>
+                <!-- Chặng 4 -->
+                <div class="bg-white border border-slate-200 p-6 rounded-2xl flex flex-col md:flex-row gap-6 items-start hover:border-red-200 transition-colors group">
+                    <div class="flex-shrink-0 w-12 h-12 bg-slate-900 group-hover:bg-red-600 text-white rounded-xl flex items-center justify-center font-black text-xl transition-colors">4</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">Thực Chiến Dự Án Tổng Hợp</h3>
+                        <div class="text-xs font-bold text-red-600 tracking-wider uppercase mb-3 bg-red-50 inline-block px-2 py-1 rounded">Portfolio & CV</div>
+                        <p class="text-slate-600 leading-relaxed">Data Storytelling, xây dựng CV làm nổi bật tư duy, luyện phỏng vấn Mock Interview với 3 dự án thực tế.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL CTA -->
+        <section class="pt-10">
+            <div class="bg-gradient-to-br from-[#1A1A1A] to-[#0A0A0A] rounded-3xl p-8 md:p-12 text-white relative overflow-hidden shadow-2xl">
+                <div class="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+                    <svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                </div>
+
+                <div class="relative z-10 max-w-2xl mx-auto text-center">
+                    <div class="inline-block bg-red-600/20 text-red-400 font-bold px-4 py-1.5 rounded-full text-sm mb-6 border border-red-500/20">
+                        Lộ Trình Cá Nhân Hóa
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold mb-6 leading-tight">
+                        Bạn muốn một con đường được thiết kế riêng?
+                    </h2>
+                    <p class="text-slate-400 text-lg mb-10 leading-relaxed">
+                        Bảng trắc nghiệm cho bạn cái nhìn tổng quan. Nhưng mỗi người có xuất phát điểm, lợi thế ngành cũ và quỹ thời gian khác nhau. Thay vì tự bơi trong biển tài liệu mơ hồ, hãy để chuyên gia MindX đồng hành:
+                    </p>
+
+                    <div class="text-left bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 mb-10 backdrop-blur-sm">
+                        <h4 class="font-bold text-xl mb-6 text-white text-center md:text-left">Trong 30 phút trò chuyện 1-1, chuyên gia sẽ:</h4>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4">
+                                <div class="mt-1 bg-red-500/20 text-red-400 p-1 rounded-full"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span class="text-slate-300 leading-relaxed"><strong class="text-white">Giải mã trắc nghiệm:</strong> Phân tích chi tiết điểm số các nhóm tố chất.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="mt-1 bg-red-500/20 text-red-400 p-1 rounded-full"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span class="text-slate-300 leading-relaxed"><strong class="text-white">Định vị thế mạnh:</strong> Chỉ ra "vũ khí độc quyền" từ ngành học/việc cũ.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="mt-1 bg-red-500/20 text-red-400 p-1 rounded-full"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span class="text-slate-300 leading-relaxed"><strong class="text-white">Thiết kế lộ trình:</strong> Vạch ra các bước học cụ thể, phân bổ hợp lý quỹ thời gian.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button class="w-full md:w-auto bg-red-600 hover:bg-red-500 text-white px-10 py-5 rounded-xl font-bold text-lg transition-all shadow-[0_0_40px_-10px_rgba(220,38,38,0.5)] hover:shadow-[0_0_60px_-10px_rgba(220,38,38,0.7)] hover:-translate-y-1 flex items-center justify-center gap-2 mx-auto group">
+                        Đăng Ký Tư Vấn 1-1 Miễn Phí <i data-lucide="arrow-up-right" class="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    </button>
+                    <p class="mt-4 text-sm text-slate-500 font-medium">Hình thức: Online hoặc Offline tại MindX</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="border-t border-slate-200 bg-white py-10 mt-20 text-center text-slate-500 text-sm font-medium">
+        <p>© 2026 Bản quyền nội dung thuộc về MindX. Designed for reading.</p>
+    </footer>
+
+    <!-- Javascript Logic for Quiz -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Data Definitions
+        const groupsInfo = {
+            'A': { title: "Tư duy phân tích & Logic", desc: "Đo lường: Khả năng bóc tách vấn đề, tư duy nguyên nhân - kết quả." },
+            'B': { title: "Sự tò mò & Tư duy kinh doanh", desc: "Đo lường: Sự hứng thú tự nhiên với số liệu và cơ chế vận hành dòng tiền." },
+            'C': { title: "Sự kiên nhẫn & Tỉ mỉ", desc: "Đo lường: Khả năng làm việc với dữ liệu lộn xộn và bền bỉ khi gặp lỗi." },
+            'D': { title: "Giao tiếp & Kể chuyện số liệu", desc: "Đo lường: Khả năng truyền đạt thông tin phức tạp liên phòng ban." }
+        };
+
+        const questions = [
+            { id: 1, group: 'A', text: "Khi nhìn thấy một hiện tượng lạ (VD: tiền điện tháng này tăng gấp đôi), phản xạ đầu tiên của tôi là tự hỏi ngay 'Tại sao lại như vậy? Nguyên nhân cụ thể nằm ở đâu?' chứ không chỉ tặc lưỡi bỏ qua." },
+            { id: 2, group: 'A', text: "Tôi thích giải quyết mọi vấn đề (công việc hay cuộc sống) bằng cách chia nhỏ nó ra thành từng phần để xử lý từng bước, thay vì hành động theo linh cảm hay cảm xúc nhất thời." },
+            { id: 3, group: 'A', text: "Khi nhận một nhiệm vụ mơ hồ, tôi biết cách chủ động đặt ngược lại câu hỏi để làm rõ: xem khía cạnh nào, so sánh với thời điểm nào, để tránh làm lạc hướng." },
+            { id: 4, group: 'A', text: "Tôi có thói quen tự động tìm kiếm các điểm so sánh khi đánh giá một con số (VD: khi nghe doanh số 100 triệu, tôi tự hỏi tăng/giảm so với tháng trước bao nhiêu %)." },
+            { id: 5, group: 'A', text: "Khi một kế hoạch thất bại, tôi thích dành thời gian để phân tích tìm ra nguyên nhân cốt lõi (root cause) để rút kinh nghiệm sâu sắc." },
+            { id: 6, group: 'B', text: "Tôi cảm thấy bị thu hút và thích thú khi xem các biểu đồ phân tích, các báo cáo thị trường có nhiều số liệu thống kê hoặc tin tức phân tích tài chính." },
+            { id: 7, group: 'B', text: "Khi trải nghiệm một dịch vụ (Shopee, Grab), tôi thường tò mò: Họ thu thập dữ liệu gì? Làm sao họ biết mình thích sản phẩm này để gợi ý quảng cáo?" },
+            { id: 8, group: 'B', text: "Tôi muốn hiểu rõ cơ chế vận hành dòng tiền: các yếu tố nào thực sự tác động đến doanh thu, chi phí, biên lợi nhuận hay tỷ lệ giữ chân khách hàng." },
+            { id: 9, group: 'B', text: "Tôi cảm thấy thỏa mãn khi tự mình tổng hợp thông tin, số liệu từ nhiều nguồn khác nhau để tự vẽ ra một bức tranh toàn cảnh." },
+            { id: 10, group: 'B', text: "Tôi sẵn sàng dành thêm thời gian tìm hiểu sâu về một mô hình kinh doanh mới xuất hiện trên thị trường mà tôi thấy tò mò." },
+            { id: 11, group: 'C', text: "Tôi rất dễ phát hiện ra các lỗi nhỏ trong tài liệu hoặc bảng tính Excel như lỗi chính tả, định dạng ngày tháng không đồng nhất hoặc các ô trống dữ liệu bị lệch." },
+            { id: 12, group: 'C', text: "Tôi có khả năng ngồi tập trung làm một công việc chi tiết và lặp đi lặp lại (như rà soát số liệu) trong vài tiếng đồng hồ mà không cảm thấy quá chán nản." },
+            { id: 13, group: 'C', text: "Khi kết quả tính toán cuối cùng bị lệch dù chỉ một con số nhỏ, tôi sẽ quyết tâm lội ngược dòng từng công thức, từng dòng dữ liệu để tìm ra lỗi sai bằng được." },
+            { id: 14, group: 'C', text: "Tôi cảm thấy rất khó chịu khi nhìn thấy các báo cáo trình bày cẩu thả, số liệu không nhất quán hoặc các bảng Excel lộn xộn." },
+            { id: 15, group: 'C', text: "Tôi không ngại việc phải đập đi làm lại từ đầu một bảng phân tích nếu phát hiện ra mình đã thiết lập sai logic từ bước nền tảng." },
+            { id: 16, group: 'D', text: "Tôi thích và tự tin vào khả năng giải thích một vấn đề chuyên môn phức tạp cho một người không biết gì nghe mà họ vẫn hiểu được dễ dàng." },
+            { id: 17, group: 'D', text: "Khi trình bày ý kiến hoặc viết email, tôi có xu hướng trình bày mạch lạc theo cấu trúc rõ ràng: Vấn đề hiện tại -> Dữ liệu chứng minh -> Đề xuất giải pháp." },
+            { id: 18, group: 'D', text: "Tôi hiểu rằng không phải số liệu nào mình tìm ra cũng cần đưa vào báo cáo; tôi biết cách chọn lọc chỉ hiển thị những con số quan trọng nhất." },
+            { id: 19, group: 'D', text: "Tôi cảm thấy thoải mái và tự tin khi làm việc nhóm, trao đổi thông tin với những đồng nghiệp ở các phòng ban khác nhau." },
+            { id: 20, group: 'D', text: "Tôi tiếp nhận các ý kiến phản biện hoặc nhận xét trái chiều về kết quả công việc của mình với thái độ cởi mở, coi đó là dữ liệu khách quan để cải thiện." },
+        ];
+
+        let answers = {};
+        const quizContainer = document.getElementById('quiz-container');
+
+        // Render Questions
+        ['A', 'B', 'C', 'D'].forEach(group => {
+            const groupHTML = `
+                <div class="relative">
+                    <div class="sticky top-16 bg-[#FAFAFA]/95 backdrop-blur py-4 z-10 border-b border-slate-200 mb-6">
+                        <h3 class="text-xl font-bold text-slate-900">Nhóm ${group} — ${groupsInfo[group].title}</h3>
+                        <p class="text-sm text-slate-500 mt-1">${groupsInfo[group].desc}</p>
+                    </div>
+                    <div class="space-y-6" id="group-${group}-questions">
+                        <!-- Questions injected here -->
+                    </div>
+                </div>
+            `;
+            quizContainer.insertAdjacentHTML('beforeend', groupHTML);
+
+            const groupContainer = document.getElementById(`group-${group}-questions`);
+            const groupQuestions = questions.filter(q => q.group === group);
+            
+            groupQuestions.forEach(q => {
+                const qHTML = `
+                    <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm hover:border-slate-300 transition-all space-y-4">
+                        <div class="font-medium text-slate-800 leading-relaxed text-sm md:text-base">
+                            <span class="text-slate-400 font-bold">Câu ${q.id}:</span> ${q.text}
+                        </div>
+                        <div class="flex justify-between items-center gap-2 max-w-md mx-auto pt-2">
+                            ${[1, 2, 3, 4, 5].map(val => `
+                                <label class="flex-1 text-center cursor-pointer">
+                                    <input type="radio" name="q-${q.id}" value="${val}" class="quiz-radio peer" onchange="setAnswer(${q.id}, '${group}', ${val})">
+                                    <div class="py-2.5 rounded-xl border border-slate-200 font-bold text-slate-600 peer-checked:bg-red-600 peer-checked:text-white peer-checked:border-red-600 hover:bg-slate-50 transition-all text-sm md:text-base">
+                                        ${val}
+                                    </div>
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                groupContainer.insertAdjacentHTML('beforeend', qHTML);
+            });
+        });
+
+        // Set Answer
+        function setAnswer(id, group, val) {
+            answers[id] = { group, val };
+            document.getElementById('validation-error').classList.add('hidden');
+        }
+
+        const submitBtn = document.getElementById('submit-quiz-btn');
+        const validationError = document.getElementById('validation-error');
+        const errorMessage = document.getElementById('error-message');
+        const resultSection = document.getElementById('result-section');
+
+        submitBtn.addEventListener('click', () => {
+            // Check if all questions are answered
+            const answeredCount = Object.keys(answers).length;
+            if (answeredCount < questions.length) {
+                const unanswered = [];
+                questions.forEach(q => {
+                    if (!answers[q.id]) unanswered.push(q.id);
+                });
+                errorMessage.innerText = `Vui lòng hoàn thành tất cả các câu hỏi. Các câu chưa trả lời: ${unanswered.join(', ')}`;
+                validationError.classList.remove('hidden');
+                validationError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            // Reset validation error
+            validationError.classList.add('hidden');
+
+            // Calculate scores
+            let totalScore = 0;
+            let groupScores = { 'A': 0, 'B': 0, 'C': 0, 'D': 0 };
+
+            Object.values(answers).forEach(ans => {
+                totalScore += ans.val;
+                groupScores[ans.group] += ans.val;
+            });
+
+            // Display scores
+            document.getElementById('score-display').innerText = totalScore;
+            document.getElementById('score-A').innerText = groupScores['A'];
+            document.getElementById('score-B').innerText = groupScores['B'];
+            document.getElementById('score-C').innerText = groupScores['C'];
+            document.getElementById('score-D').innerText = groupScores['D'];
+
+            // Define feedback content
+            let title = "";
+            let desc = "";
+            let action = "";
+            let boxClass = "";
+
+            if (totalScore >= 80) {
+                title = "🎉 Tố chất VÀNG - Bạn sinh ra để làm Data Analyst!";
+                desc = `Với mức điểm ${totalScore}/100, bạn có tố chất phân tích xuất sắc, nhạy cảm nghiệp vụ tốt và khả năng truyền đạt rõ ràng. Bạn cực kỳ phù hợp để theo đuổi ngành Data Analyst, đặc biệt là hướng đi AI-Augmented Analyst để tối ưu hóa hiệu suất vượt trội.`;
+                action = `👉 <strong>Đề xuất:</strong> Bạn nên tập trung xây dựng Portfolio gồm 3 dự án thực tế ngay để chuẩn bị hồ sơ ứng tuyển. Đăng ký nhận tư vấn lộ trình 1-1 từ chuyên gia MindX bên dưới để định hướng tốt nhất.`;
+                boxClass = "bg-emerald-50 border-emerald-200 text-emerald-900";
+            } else if (totalScore >= 60) {
+                title = "👍 Độ tương thích CAO - Rất tiềm năng!";
+                desc = `Đạt ${totalScore}/100 điểm cho thấy bạn có nền tảng tư duy logic tốt và khả năng tỉ mỉ. Các kỹ năng nghiệp vụ hoặc lập trình của bạn có thể mài giũa thêm qua thực tế. Bạn hoàn toàn có thể chuyển ngành thành công nếu có lộ trình học đúng đắn.`;
+                action = `👉 <strong>Đề xuất:</strong> Hãy bắt đầu với SQL và Power BI để trực quan hóa dữ liệu kinh doanh từ ngành cũ của bạn. Đăng ký trò chuyện 1-1 để chuyên gia MindX chỉ ra cách tận dụng tối đa thế mạnh ngành cũ của bạn.`;
+                boxClass = "bg-blue-50 border-blue-200 text-blue-900";
+            } else {
+                title = "⚡ Cần nỗ lực mài giũa tư duy dữ liệu!";
+                desc = `Mức điểm ${totalScore}/100 phản ánh bạn có thể chưa quen với việc phân tích dữ liệu một cách hệ thống hoặc còn e ngại số liệu. Đừng lo lắng! Tư duy phân tích hoàn toàn có thể rèn luyện được thông qua các bài tập và case study thực chiến.`;
+                action = `👉 <strong>Đề xuất:</strong> Đừng vội học lập trình phức tạp. Hãy bắt đầu làm quen với phân tích số liệu đơn giản bằng Excel và tìm hiểu về các mô hình kinh doanh cơ bản. Đăng ký tư vấn 1-1 để chuyên gia MindX thiết kế lộ trình học nhẹ nhàng, phù hợp nhất với bạn.`;
+                boxClass = "bg-amber-50 border-amber-200 text-amber-900";
+            }
+
+            // Apply feedback styling
+            const feedbackBox = document.getElementById('feedback-box');
+            feedbackBox.className = `p-6 rounded-2xl border text-left ${boxClass}`;
+            document.getElementById('feedback-title').innerText = title;
+            document.getElementById('feedback-desc').innerText = desc;
+            document.getElementById('feedback-action').innerHTML = action;
+
+            // Show results & scroll to it
+            resultSection.classList.remove('hidden');
+            lucide.createIcons(); // Re-render icons if any in results
+            resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    </script>
+</body>
+</html>
